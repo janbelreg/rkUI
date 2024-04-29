@@ -1,0 +1,61 @@
+
+
+<div class="md:flex md:items-center" *ngIf="zaznam" style="background-color: #f5f5f5; padding: 20px;">
+    
+    <!--h2>{{zaznam.adresat}}</h2-->
+    
+    <div style="margin-bottom: 10px;">
+        Číslo záznamu:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="zaznam.id" placeholder="Číslo">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 10px;">
+        Adresa:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="zaznam.adresa" placeholder="Adresa">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 10px;">
+        Adresát:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="zaznam.adresat" placeholder="Adresát">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 10px;">
+        Dátum Vytvorenia:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="zaznam.datumCreate" placeholder="Dátum Vytvorenia">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 10px;">
+        Dátum Vybavenia:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="zaznam.datumDue" placeholder="Dátum Vybavenie">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 10px;">
+        Stav:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="zaznam.stav" placeholder="Stav">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 10px;">
+        Spis ID:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="zaznam.spisId" placeholder="Spis ID">
+        </mat-form-field>
+    </div>
+
+    <button mat-button color="primary" (click)="updateZaznams(zaznam)" *ngIf="zaznam.id">Uložiť</button>
+    <button mat-button color="primary" (click)="deleteZaznams(zaznam)" *ngIf="zaznam.id">Vymazať</button>
+    <button mat-button color="primary" (click)="createZaznams(zaznam)" *ngIf="!zaznam.id">Vytvoriť</button>
+</div>
+
+

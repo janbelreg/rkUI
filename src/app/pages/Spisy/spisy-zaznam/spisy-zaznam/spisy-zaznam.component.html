@@ -1,0 +1,138 @@
+<app-header></app-header>
+<mat-drawer-container 
+[autosize]="true"
+class="min-h-full  mx-auto border-x">
+    <mat-drawer mode="side" opened class="p-6">
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title> KATEGÓRIE</mat-panel-title>
+        </mat-expansion-panel-header>
+        <!--mat-selection-list -->
+        <mat-panel-title>
+          <mat-radio-button (click)="getUpdated()">Všetky</mat-radio-button>
+  </mat-panel-title>
+        <mat-panel-title>
+                <mat-radio-button (click)="filterOtvoreny()">otvorený</mat-radio-button>
+        </mat-panel-title>
+        <mat-panel-title>
+                <mat-radio-button (click)="filterVybaveny()">vybevený</mat-radio-button>
+        </mat-panel-title>
+              <mat-panel-title>
+                <mat-radio-button (click)="filterUzavrety()">uzavretý</mat-radio-button>
+              </mat-panel-title>
+            
+        <!--/mat-selection-list-->
+        </mat-expansion-panel>
+        
+    </mat-drawer>
+
+
+    
+    
+
+
+<mat-card >
+  <button mat-stroked-button color="primary" (click)="initNewSpisyZaznamList()">Vytvor nový záznam</button>
+
+  <mat-card class="mb-4">
+    <div class="flex justify-between">
+        <div>
+            <button mat-button [matMenuTriggerFor]="sortByMenu">
+            Zoraď podľa {{sortA}}
+            <mat-icon>expand_more</mat-icon>
+            </button>
+            <mat-menu #sortByMenu="matMenu">
+                <button (click)="sortDown()" mat-menu-item>zostupne</button>
+                <button (click)="sortUp()" mat-menu-item>vzostupne</button>
+            </mat-menu>
+        </div>
+        <div class="flex items-center">
+                <button mat-button [matMenuTriggerFor]="menu">
+                    Show {{ zaznamy.length }}
+                    <mat-icon>expand_more</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="pageStart(10)" mat-menu-item>10</button>
+                    <button (click)="pageStart(20)" mat-menu-item>20</button>
+                    <button (click)="pageStart(30)" mat-menu-item>30</button>
+                    <button (click)="pageStart(42)" mat-menu-item>max</button>
+                </mat-menu>
+        </div>
+    </div>
+</mat-card>
+
+  <div class="table-container">
+    <mat-table [dataSource]="zaznmy" >
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Číslo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef> Užívateľ </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.username }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="adresa">
+        <mat-header-cell *matHeaderCellDef> Adresa </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.adresa }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="adresat">
+        <mat-header-cell *matHeaderCellDef> Adresát </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.adresat }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="datumCreate">
+        <mat-header-cell *matHeaderCellDef> Dátum vytvorenia </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.datumCreate }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="datumDue">
+        <mat-header-cell *matHeaderCellDef> Dátum vybavenia do </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.datumDue }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="stav">
+        <mat-header-cell *matHeaderCellDef> Stav </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.stav }} </mat-cell>
+      </ng-container>
+
+        <ng-container matColumnDef="spisId">
+          <mat-header-cell *matHeaderCellDef>  ID spisu </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.spisId }} </mat-cell>
+        </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Akcie </mat-header-cell>
+        <mat-cell *matCellDef="let element ">
+          <button mat-button color="primary" (click)="editSpisyZaznam(element)">Uprav</button>
+          
+        </mat-cell>
+      </ng-container>
+  
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <mat-row *matRowDef="let element ; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <div class="flex justify-end">
+    <button mat-raised-button (click)="pageNdown(10)"><mat-icon><span class="material-symbols-outlined">
+      arrow_back_ios
+      </span></mat-icon></button>
+      <button mat-raised-button (click)="pageNup(10)"><mat-icon><span class="material-symbols-outlined">
+        arrow_forward_ios
+        </span></mat-icon></button>
+      </div>
+    <!--button (click)="ngOnInit()">Apply</button-->
+
+ 
+
+  
+  <app-edit-entry [zaznam]="zaznmToEdit" ></app-edit-entry>
+
+  
+</mat-card>
+

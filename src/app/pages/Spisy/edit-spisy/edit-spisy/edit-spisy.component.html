@@ -1,0 +1,44 @@
+<div class="md:flex md:items-center" *ngIf="spis" style="  background-color: #f5f5f5; padding: 20px;">
+    <h2>{{spis.nazovSpisu}}</h2>
+    
+    <div style="margin-bottom: 30px;">
+        Číslo záznamu:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="spis.id" placeholder="Číslo">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+        Meno:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="spis.nazovSpisu" placeholder="Meno">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+        Dátum vytvorenia:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="spis.datumVytvorenia" placeholder="Dátum vytvorenia">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+        Miesto:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="spis.miestoNarodenia" placeholder="Miesto">
+        </mat-form-field>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+        Uživateľ:
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="spis.username" placeholder="Uživateľ">
+        </mat-form-field>
+    </div>
+
+    <button mat-button color="primary" (click)="updateSpise(spis)" *ngIf="spis.id">Uložiť</button>
+    <button mat-button color="primary" (click)="deleteSpise(spis)" *ngIf="spis.id">Vymazať</button>
+    <button mat-button color="primary" (click)="createSpise(spis)" *ngIf="!spis.id">Vytvoriť</button>
+</div>
+
+

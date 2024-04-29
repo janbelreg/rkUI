@@ -1,0 +1,25 @@
+<mat-card class="mb-4">
+    <div class="flex justify-between">
+        <div>
+            <button mat-button [matMenuTriggerFor]="sortByMenu">
+            Zoraď podľa {{sort}}
+            <mat-icon>expand_more</mat-icon>
+            </button>
+            <mat-menu #sortByMenu="matMenu">
+                <button (click)="onSortUpdated('zostupne')" mat-menu-item>zostupne</button>
+                <button (click)="onSortUpdated('vzostupne')" mat-menu-item>vzostupne</button>
+            </mat-menu>
+        </div>
+        <div class="flex items-center">
+                <button mat-button [matMenuTriggerFor]="menu">
+                    Show {{ itemsShowCount }}
+                    <mat-icon>expand_more</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="onItemsUpdated(12)" mat-menu-item>12</button>
+                    <button (click)="onItemsUpdated(10)" mat-menu-item>10</button>
+                    <button (click)="onItemsUpdated(5)" mat-menu-item>5</button>
+                </mat-menu>
+        </div>
+    </div>
+</mat-card>

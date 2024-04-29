@@ -1,0 +1,116 @@
+<app-header></app-header>
+<mat-drawer-container 
+[autosize]="true"
+class="min-h-full  mx-auto border-x">
+    <mat-drawer mode="side" opened class="p-6">
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title> Miesto vybavenia </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!--mat-selection-list -->
+        <mat-panel-title>
+          <mat-radio-button (click)="getUpdated()">Všetky</mat-radio-button>
+  </mat-panel-title>
+        <mat-panel-title>
+                <mat-radio-button (click)="filterBA()">Bratislava</mat-radio-button>
+        </mat-panel-title>
+        <mat-panel-title>
+                <mat-radio-button (click)="filterKE()">Košice</mat-radio-button>
+        </mat-panel-title>
+              <mat-panel-title>
+                <mat-radio-button (click)="filterKK()">Kežmarok</mat-radio-button>
+              </mat-panel-title>
+            
+        <!--/mat-selection-list-->
+        </mat-expansion-panel>
+        
+    </mat-drawer>
+
+
+    
+    
+  
+
+<mat-card >
+  <mat-card >
+    <button mat-stroked-button color="primary" (click)="initSpisy()">Vytvor nový záznam</button>
+
+    <mat-card class="mb-4">
+      <div class="flex justify-between">
+          <div>
+              <button mat-button [matMenuTriggerFor]="sortByMenu">
+              Zoraď podľa {{sortA}}
+              <mat-icon>expand_more</mat-icon>
+              </button>
+              <mat-menu #sortByMenu="matMenu">
+                  <button (click)="sortDown()" mat-menu-item>zostupne</button>
+                  <button (click)="sortUp()" mat-menu-item>vzostupne</button>
+              </mat-menu>
+          </div>
+          <div class="flex items-center">
+                  <button mat-button [matMenuTriggerFor]="menu">
+                      Show {{ spisy.length }}
+                      <mat-icon>expand_more</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                      <button (click)="pageStart(10)" mat-menu-item>10</button>
+                      <button (click)="pageStart(20)" mat-menu-item>20</button>
+                      <button (click)="pageStart(30)" mat-menu-item>30</button>
+                      <button (click)="pageStart(42)" mat-menu-item>max</button>
+                  </mat-menu>
+          </div>
+      </div>
+  </mat-card>
+
+    <div class="table-container">
+      <mat-table [dataSource]="spisy" >
+        <!-- Define columns -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Číslo </mat-header-cell>
+          <mat-cell *matCellDef="let element"><a   [routerLink]="'/spisy-zaznam'" (click)="rkServiceService.premennas=element.id" >{{ element.id }}</a>  </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="nazovSpisu">
+          <mat-header-cell *matHeaderCellDef> Názov spisu </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.nazovSpisu }} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="datumVytvorenia">
+          <mat-header-cell *matHeaderCellDef> Dátum vytvorenia </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.datumVytvorenia }} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="miestoNarodenia">
+          <mat-header-cell *matHeaderCellDef> Miesto vybavenia </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.miestoNarodenia }} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef> Uživateľ </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.username }} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Akcie </mat-header-cell>
+          <mat-cell *matCellDef="let element ">
+            <button mat-button color="primary" (click)="editSpisy(element)">Uprav</button>
+            <!--button mat-button color="primary" (click)="rkServiceService.getDirectorFilms(element.id)">{{ element.id }}</button-->
+          </mat-cell>
+        </ng-container>
+    
+        <!-- Define header row -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <!-- Define row -->
+        <mat-row *matRowDef="let element ; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+    <div class="flex justify-end">
+      <button mat-raised-button (click)="pageNdown(10)"><mat-icon><span class="material-symbols-outlined">
+        arrow_back_ios
+        </span></mat-icon></button>
+        <button mat-raised-button (click)="pageNup(10)"><mat-icon><span class="material-symbols-outlined">
+          arrow_forward_ios
+          </span></mat-icon></button>
+        </div>
+    <app-edit-spisy [spis]="spisToEdit" ></app-edit-spisy>
+</mat-card>
