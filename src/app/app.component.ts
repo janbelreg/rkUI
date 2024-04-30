@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RkServiceService } from 'src/app/services/rk-service.service';
 import { Zaznam } from 'src/app/models/Zaznam';
-import { Reziser } from 'src/app/models/Reziser';
 import { Spis } from 'src/app/models/Spis';
 import { ActivatedRoute } from '@angular/router';
 import { SpisyZaznamComponent } from 'src/app/pages/Spisy/spisy-zaznam/spisy-zaznam/spisy-zaznam.component';
@@ -30,7 +29,7 @@ export class AppComponent {
     
   } 
 
-
+//prepojovacie metody so službou rkservice
   ngOnInit(): void {
     this.rkServiceService
     .getSpis()

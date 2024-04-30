@@ -13,41 +13,22 @@ export class AuthService {
   currentUser$ = this.usernameSubject.asObservable();
 
   constructor(private http: HttpClient) {}
-
+  //metóda v službe pre realizáciu registrácie smerom k API
   public register(user: any): Observable<any> {
     return this.http.post<any>(
-      'https://localhost:7241/api/Auth/register',      //'https://localhost:7157/api/Auth/register'
+      'https://localhost:7241/api/Auth/register',      
       user
     );
   }
-
+  //metóda pre získanie dát z APi pre účel prihlásenia
   public login(user: any): Observable<string> {
-    return this.http.post('https://localhost:7241/api/Auth/login', user, { //'https://localhost:7157/api/Auth/login'
+    return this.http.post('https://localhost:7241/api/Auth/login', user, { 
       responseType: 'text',
     });
   }
-/*
-  isLoggedIn(): boolean {
-    // Check if token is present
-    return !!localStorage.getItem('token');
-  }
-
-  fetchUsername(): void {
-    this.http.get<any>(`${this.apiUrl}/username`).subscribe(
-      response => {
-        this.usernameSubject.next(response.username);
-      },
-      error => {
-        console.error('Error fetching username', error);
-      }
-    );
-  }
-
-  getUsername(): BehaviorSubject<string> {
-    return this.usernameSubject;
-  }*/
 
 
+  //metóda pre získanie mena úživateľa
   public getMe(): Observable<string> {
     return this.http.get('https://localhost:7241/api/Auth', {
       responseType: 'text',

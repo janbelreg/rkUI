@@ -1,12 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit } from '@angular/core';
-//import { WeatherForecast } from 'src/models/WeatherForecast';
 import { RkServiceService } from 'src/app/services/rk-service.service';
-//import { AccountService } from 'src/services/account.service';
 //import { User } from 'src/models/user';
 import { Zaznam } from 'src/app/models/Zaznam';
 import { Spis } from 'src/app/models/Spis';
-import { Reziser } from 'src/app/models/Reziser';
-import { Film } from 'src/app/models/Film';
 import { ActivatedRoute } from '@angular/router';
 import { SpisyZaznamComponent } from 'src/app/pages/Spisy/spisy-zaznam/spisy-zaznam/spisy-zaznam.component';
 import {AfterViewInit, ViewChild} from '@angular/core';
@@ -40,6 +36,7 @@ export class SpisysoloComponent implements AfterViewInit{
   
   displayedColumns: string[] = ['id', 'nazovSpisu', 'datumVytvorenia', 'miestoNarodenia', 'username', 'actions'];
 
+  //solo komponent pre použitie v home
   constructor(public rkServiceService: RkServiceService, private cdr: ChangeDetectorRef ) { 
   } 
 

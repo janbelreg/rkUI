@@ -1,13 +1,8 @@
 import { ChangeDetectorRef, EventEmitter, Component, OnInit, OnChanges } from '@angular/core';
-//import { WeatherForecast } from 'src/models/WeatherForecast';
 import { RkServiceService } from 'src/app/services/rk-service.service';
-//import { AccountService } from 'src/services/account.service';
-//import { User } from 'src/models/user';
 import { Zaznam } from 'src/app/models/Zaznam';
-import { Reziser } from 'src/app/models/Reziser';
 import { ActivatedRoute } from '@angular/router';
 import { EditEntryComponent } from 'src/app/pages/Zaznamy/edit-entry/edit-entry.component';
-//import { Film } from 'src/app/models/Film';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
@@ -38,14 +33,13 @@ export class ZaznamysoloComponent {
   sortA: string = "";
   displayedColumns: string[] = ['id', 'adresa', 'adresat', 'datumCreate', 'datumDue','stav', 'spisId','actions'];
 
-
+  //solo komponent pre použitie v home
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort = {} as MatSort;
 
 
-  constructor(public rkServiceService: RkServiceService, private cdr: ChangeDetectorRef) { // private route: ActivatedRoute, private liveAnnouncer: LiveAnnouncer
-    
+  constructor(public rkServiceService: RkServiceService, private cdr: ChangeDetectorRef) { 
   } 
 
   

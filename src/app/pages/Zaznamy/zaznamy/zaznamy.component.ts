@@ -217,27 +217,18 @@ export class ZaznamyComponent implements AfterViewInit{
   }
 
   pageUp() {
-      //const pageSize = this.pageSize + 1;
-      
-      
-     /* const startIndex = this.startIndex+5;
-      //this.startIndex = this.startIndex * this.pageSize;
-      const endIndex = this.endIndex +5;
-      this.getUpdated();
-      console.log(startIndex,endIndex);*/
+
       this.rkServiceService
       .getZaznam()
       .subscribe((result: Zaznam[]) => 
         {
-                //dataSource: MatTableDataSource<Zaznam> = new MatTableDataSource<Zaznam>([]);
+  
           this.cdr.detectChanges();
-          this.zaznamy = result.slice(10,25);//result;//.slice(this.startIndex,this.endIndex);
+          this.zaznamy = result.slice(10,25);
           this.dataSource.data = this.zaznamy;
           this.dataSource = new MatTableDataSource(result);
           this.dataSource.paginator = this.paginator;
-          //this.dataSource.data = result;
           this.totalItems = this.filteredData.length;
-          //this.dataSource.data = this.zaznamy;
           console.log("Data fetched successfully:", this.dataSource);
           this.cdr.detectChanges();
         }, error => {

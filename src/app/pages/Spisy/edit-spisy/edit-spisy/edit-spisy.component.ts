@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RkServiceService } from 'src/app/services/rk-service.service';
-import { Reziser } from 'src/app/models/Reziser';
 import { Spis } from 'src/app/models/Spis';
 import { ActivatedRoute } from '@angular/router';
 
@@ -47,17 +46,7 @@ deleteSpise(spis: Spis) {
   });
 }
 
-/*createSpise(spis: Spis) {
-  this.rkserviceService
-  .createSpis(spis)
-  .subscribe((spis: Spis[]) => {
-    console.log('Session successful. Response:', spis);
-    this.spisUpdated.emit(spis);
-    window.alert('Bol vytvorený spis: ' + JSON.stringify(spis));
-  }, error => {
-    console.error('Update failed:', error);
-  });
-}*/
+
 
 createSpise(spis: Spis) {
   this.rkserviceService

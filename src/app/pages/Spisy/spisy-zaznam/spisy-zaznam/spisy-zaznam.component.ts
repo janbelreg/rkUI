@@ -1,12 +1,8 @@
 import { ChangeDetectorRef,Component, OnInit } from '@angular/core';
-//import { WeatherForecast } from 'src/models/WeatherForecast';
 import { RkServiceService } from 'src/app/services/rk-service.service';
-//import { AccountService } from 'src/services/account.service';
 //import { User } from 'src/models/user';
 import { Zaznam } from 'src/app/models/Zaznam';
-import { Film } from 'src/app/models/Film';
 import { Spis } from 'src/app/models/Spis';
-import { Reziser } from 'src/app/models/Reziser';
 import { ActivatedRoute } from '@angular/router';
 import { SpisyComponent } from 'src/app/pages/Spisy/spisy/spisy.component';
 import { ZaznamyComponent } from 'src/app/pages/Zaznamy/zaznamy/zaznamy.component';
@@ -58,9 +54,7 @@ export class SpisyZaznamComponent {
 
   ngOnInit(): void {
    
-    /*this.rkServiceService
-    .getSpisZaznamy(this.rkServiceService.premennas) 
-    .subscribe((result: Zaznam[]) => (this.zaznmy = result));*/
+
     this.getUpdated();
     this.dataSource.paginator = this.paginator;
   }
@@ -68,10 +62,10 @@ export class SpisyZaznamComponent {
   ngAfterViewInit(): void {
     
     this.dataSource.paginator = this.paginator;
-    //this.getUpdated();
+    
 
   }
-
+  //metódy podobné, ako u bežných záznamoch
   getUpdated(): void {
     this.rkServiceService
     .getSpisZaznamy(this.rkServiceService.premennas)
@@ -120,7 +114,6 @@ export class SpisyZaznamComponent {
         this.dataSource.data = this.zaznmy;
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.paginator = this.paginator;
-        //this.totalItems = this.filteredData.length;
         console.log("Data fetched successfully:", this.dataSource);
         this.cdr.detectChanges();
       }, error => {
@@ -138,7 +131,6 @@ export class SpisyZaznamComponent {
         this.dataSource.data = this.zaznmy;
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.paginator = this.paginator;
-        //this.totalItems = this.filteredData.length;
         console.log("Data fetched successfully:", this.dataSource);
         this.cdr.detectChanges();
       }, error => {
@@ -156,7 +148,6 @@ export class SpisyZaznamComponent {
         this.dataSource.data = this.zaznmy;
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.paginator = this.paginator;
-        //this.totalItems = this.filteredData.length;
         console.log("Data fetched successfully:", this.dataSource);
         this.cdr.detectChanges();
       }, error => {
@@ -217,11 +208,6 @@ export class SpisyZaznamComponent {
 
 
 
-  /*setCurrentUser() {
-    const userString = localStorage.getItem('user');
-    if (!userString) return;
-    const user: User = JSON.parse(userString);
-    this.accountService.setCurrentUser(user);
-  }*/
+
 
 }

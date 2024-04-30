@@ -34,14 +34,14 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from 'src/app/services/auth.interceptor';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ZaznamysoloComponent } from './components/zaznamysolo/zaznamysolo.component';
 import { SpisysoloComponent } from './components/spisysolo/spisysolo.component';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { UserspisyComponent } from './pages/userspisy/userspisy.component';
 
-
+//potrebne zaznamenanie importovanych modulov a componentov
 
 @NgModule({
   declarations: [

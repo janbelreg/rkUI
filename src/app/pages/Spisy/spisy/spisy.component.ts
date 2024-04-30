@@ -19,7 +19,7 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class SpisyComponent implements AfterViewInit{
   //premenné
-  title = 'store';
+  title = 'rk';
   users: any;
   spisy: Spis[] = [];
   spisToEdit?: Spis;
@@ -38,7 +38,7 @@ export class SpisyComponent implements AfterViewInit{
   
   displayedColumns: string[] = ['id', 'nazovSpisu', 'datumVytvorenia', 'miestoNarodenia', 'username', 'actions'];
 
-  constructor(public rkServiceService: RkServiceService, private cdr: ChangeDetectorRef ) { //, public directorFilmComponent: DirectorFilmComponent
+  constructor(public rkServiceService: RkServiceService, private cdr: ChangeDetectorRef ) { 
     
   } 
 
@@ -145,7 +145,7 @@ export class SpisyComponent implements AfterViewInit{
       {
         this.cdr.detectChanges();
         this.sortA = "vzostupne";
-        this.spisy = result.sort();//alternativne pouzitie result;//.slice(this.startIndex,this.endIndex);
+        this.spisy = result.sort();
         this.dataSource.data = this.spisy;
         this.dataSource = new MatTableDataSource(result);
         console.log("Data fetched successfully:", this.dataSource);
@@ -162,7 +162,7 @@ export class SpisyComponent implements AfterViewInit{
       {
         this.cdr.detectChanges();
         this.sortA = "zostupne";
-        this.spisy = result.sort((a,b) => this.spisy.length );//result;//.slice(this.startIndex,this.endIndex);
+        this.spisy = result.sort((a,b) => this.spisy.length );
         this.dataSource.data = this.spisy;
         this.dataSource = new MatTableDataSource(result);
         console.log("Data fetched successfully:", this.dataSource);

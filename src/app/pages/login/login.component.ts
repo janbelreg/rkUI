@@ -16,11 +16,11 @@ export class LoginComponent {
 
 
   constructor(private authService: AuthService, private router: Router) {}
-
+   //metóda pre registráciu
   register(user: User) {
     this.authService.register(user).subscribe();
   }
-  
+  //metóda pre prihlásenie
   login(user: User) {
     this.authService.login(user).subscribe((token: string) => {
       localStorage.setItem('authToken', token);

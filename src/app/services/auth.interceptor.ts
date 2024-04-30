@@ -6,7 +6,7 @@ import {
   } from '@angular/common/http';
   import { Injectable } from '@angular/core';
   import { Observable } from 'rxjs';
-  
+  //http zachytávač pre účel autentifikácie
   @Injectable()
   export class AuthInterceptor implements HttpInterceptor {
     intercept(

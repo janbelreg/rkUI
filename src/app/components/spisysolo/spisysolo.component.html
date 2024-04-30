@@ -1,6 +1,6 @@
 <mat-card >
   <mat-card >
-    <button mat-stroked-button color="primary" (click)="initNewSpis()">Vytvor nový záznam</button>
+    <button mat-stroked-button color="primary" (click)="initNewSpis()">Vytvor nový spis</button>
 
     <mat-card class="mb-4">
       <div class="flex justify-between">
@@ -31,7 +31,7 @@
 
     <div class="table-container">
       <mat-table [dataSource]="spisy" >
-        <!-- Define columns -->
+        <!-- Definuje stlpce -->
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef> Číslo </mat-header-cell>
           <mat-cell *matCellDef="let element"><a   [routerLink]="'/spisy-zaznam'" (click)="rkServiceService.premennas=element.id" >{{ element.id }}</a>  </mat-cell>
@@ -61,13 +61,13 @@
           <mat-header-cell *matHeaderCellDef> Akcie </mat-header-cell>
           <mat-cell *matCellDef="let element ">
             <button mat-button color="primary" (click)="editSpis(element)">Uprav</button>
-            <!--button mat-button color="primary" (click)="rkServiceService.getDirectorFilms(element.id)">{{ element.id }}</button-->
+            
           </mat-cell>
         </ng-container>
     
-        <!-- Define header row -->
+        <!-- Definuje hlavičku -->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <!-- Define row -->
+        <!-- Definuje riadok -->
         <mat-row *matRowDef="let element ; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>

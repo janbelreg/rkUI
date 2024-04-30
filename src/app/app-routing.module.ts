@@ -7,7 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SpisyComponent } from './pages/Spisy/spisy/spisy.component';
 import { AppComponent } from './app.component';
 import { UserspisyComponent } from './pages/userspisy/userspisy.component';
-
+//stanovenie ciest smerovania jednotlivých komponentov
 const routes: Routes = [
   {path: 'home', component: HomeComponent, },
   {path: 'zaznamy', component: ZaznamyComponent, },
